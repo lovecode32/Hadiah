@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>For You 💖</title>
+  <title>For You ❤️</title>
   <style>
     body {
       margin: 0;
@@ -33,8 +33,15 @@
   </style>
 </head>
 <body>
+  <!-- 🔊 Musik autoplay -->
+  <audio autoplay loop>
+    <source src="gata.mp3" type="audio/mp3" />
+    Browser kamu tidak support audio.
+  </audio>
+
   <div class="info">Website ini cuma buat kamu 💌</div>
   <canvas id="love"></canvas>
+
   <script>
     const canvas = document.getElementById("love");
     const ctx = canvas.getContext("2d");
@@ -43,8 +50,10 @@
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     }
+
     window.addEventListener("resize", resize);
     resize();
+
     const hearts = [];
     function createHeart() {
       return {
@@ -55,6 +64,7 @@
         alpha: Math.random() * 0.5 + 0.5,
       };
     }
+
     function drawHeart(x, y, size, alpha) {
       ctx.save();
       ctx.translate(x, y);
@@ -68,20 +78,24 @@
       ctx.fill();
       ctx.restore();
     }
+
     function animate() {
       ctx.clearRect(0, 0, width, height);
       if (Math.random() < 0.1) {
         hearts.push(createHeart());
       }
+
       for (let i = 0; i < hearts.length; i++) {
         const h = hearts[i];
         h.y -= h.speed;
         drawHeart(h.x, h.y, h.size, h.alpha);
       }
+
       hearts.splice(0, hearts.length - 200);
       requestAnimationFrame(animate);
     }
+
     animate();
   </script>
 </body>
-</html>
+<
